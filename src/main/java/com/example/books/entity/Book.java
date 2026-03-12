@@ -1,8 +1,11 @@
-package com.example.demo.db;
+package com.example.books.entity;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -10,16 +13,15 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Book {
+
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String googleId;
     private String title;
     private String author;
     private Integer pageCount;
-
-    public Book(String id, String title, String author) {
-        this.id = id;
-        this.title = title;
-        this.author = author;
-    }
 }
